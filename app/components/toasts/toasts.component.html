@@ -1,0 +1,20 @@
+<ngb-toast
+      *ngFor="let toast of toastService.toasts"
+      [class]="toast.classname"
+      [autohide]="true"
+      [delay]="5000"
+      (hide)="toastService.remove(toast)"
+    >
+    <ng-template [ngIf]="isTemplate(toast)" [ngIfElse]="text">
+    <ng-template [ngTemplateOutlet]="toast.msg"></ng-template>
+    </ng-template>
+
+    <ng-template #text>
+      <div class="text-white font-weight-bold p-2" [ngClass]="toast.type">
+        {{toast.head}}
+      </div>
+      <div class="bg-white p-2">
+        {{toast.msg}}
+      </div>
+    </ng-template>
+</ngb-toast>

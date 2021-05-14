@@ -1,0 +1,32 @@
+<div id="header" class="container-fluid">
+    <nav class="navbar navbar-expand-sm h-100">
+        <ul class="navbar-nav h-100">
+            <ng-container *ngFor="let item of menuItems">
+                <li class="nav-item" routerLinkActive="active" *ngIf="!item.hasItems">
+                    <a class="nav-link" [routerLink]="item.link">{{item.name}}</a>
+                </li>
+                <li class="nav-item" routerLinkActive="active" ngbDropdown display="dynamic" placement="bottom-right"  *ngIf="item.hasItems">
+                    <a class="nav-link pointer" [id]="item.id" ngbDropdownToggle>
+                        {{item.name}}
+                    </a>
+                    <div ngbDropdownMenu aria-labelledby="item.id" class="dropdown-menu">
+                        <a ngbDropdownItem *ngFor="let option of item['items']" [routerLink]="option.link">{{option.name}}</a>
+                    </div>
+                </li>
+            </ng-container>
+        </ul>
+        <div class="user-area h-100 ml-auto">
+            <span class="text-center">Admin</span>
+            <div class="d-flex align-items-center h-100" ngbDropdown display="dynamic" placement="bottom-right">
+                <a class="nav-link pointer p-0" id="userMenu" ngbDropdownToggle id="pt-color"> 
+                    <fa-icon icon="user-circle" class="header-icon pl-2 pr-0"></fa-icon>
+                </a>
+                <div ngbDropdownMenu aria-labelledby="userMenu" class="dropdown-menu">
+                    <a ngbDropdownItem routerLink="/user/profile">My Profile</a>
+                    <a ngbDropdownItem routerLink="/user/change-password">Change Password</a>
+                    <a ngbDropdownItem class="pointer" (click)="sharedService.sessionExpired('logout')">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>

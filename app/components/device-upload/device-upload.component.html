@@ -1,0 +1,40 @@
+<div id="form-content">
+    <select class="form-control upload-select" name="firstBuyer" [(ngModel)]="payload['buyer_code']" (ngModelChange) = "getDeviceMakes()">
+        <option *ngFor="let buyer of buyers" [ngValue]="buyer.code">{{buyer.name}}</option>
+    </select>
+    <select class="form-control upload-select ml-2" name="deviceMakes" [(ngModel)]="payload['buyer_make']">
+        <option *ngFor="let model of models" [ngValue]="model.code">{{model.name}}</option>
+    </select>
+    <button class="btn btn-success ml-2 p-1" (click)="openModal()">
+        UPLOAD
+    </button>
+</div>
+
+<!-- Modal -->
+<ng-template #content let-modal>
+    
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">UPLOAD CSV</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-6 pl-0">
+          <form name="form" #f="ngForm" class="upload-form">
+            <input type="file" (change)="fileChangeEvent($event)" placeholder="Upload file..." />
+            <button type="button" class="mt-auto btn btn-primary" (click)="upload()">Upload</button>
+          </form>
+        </div>
+        <div class="col-6 pr-0 upload-form">
+          <span class="text-danger">Please make sure that format of the uploaded sheet is in proper template to avoid any discrepency.</span>
+          <a class="btn btn-success mt-2 download-template-btn" href="assets/templates/EnergyMetersTemplate.csv" download="EnergyMetersTemplate.csv">Download Template</a>
+        </div>
+      </div>
+      
+    </div>
+
+
+</ng-template>

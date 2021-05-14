@@ -1,0 +1,22 @@
+.router-container{
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+.main-content{
+    height: 100%;
+    width: 80vw;
+    transition: all 0.3s;
+}
+
+.main-content-expanded{
+    height: 100%;
+    width: 95vw;
+    transition: all 0.3s;
+}
+
+.main-content-login{
+    height: 100%;
+    width: 100%;
+}

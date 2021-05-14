@@ -1,0 +1,13 @@
+<div class="router-container">
+  <div  *ngIf="sharedService.loginStatus" [ngClass]="{'sidemenu-container':!menuCollapsed, 'sidemenu-container-collapsed':menuCollapsed}">
+    <app-sidemenu></app-sidemenu>
+  </div>
+    
+  <div [ngClass]="{'main-content-login': !sharedService.loginStatus, 'main-content': sharedService.loginStatus && !menuCollapsed, 'main-content-expanded': sharedService.loginStatus && menuCollapsed }">
+    <app-header *ngIf="sharedService.loginStatus"></app-header>
+    <div  [ngClass]="{'view-content-login': !sharedService.loginStatus, 'view-content': sharedService.loginStatus}">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <app-toasts aria-live="polite" aria-atomic="true"></app-toasts>
+</div>

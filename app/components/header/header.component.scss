@@ -1,0 +1,68 @@
+@import "../../../styles.scss";
+
+#header{
+    height: $headerH;
+    background-color: $primary;
+    width: 100%;
+    color: $primaryText;
+    padding: 0;
+    box-shadow: 0 2px 5px 1px rgba(64,60,67,.16);
+
+    .navbar{    
+        padding: 0px;
+
+        ul{
+            width: 85vw;
+            justify-content: end;
+        }
+        .nav-item{
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
+
+            .nav-link{
+                @include perfectCenter;
+                height: 100%;
+                color: $primaryText;
+                font-family: $fontFamily;
+            }
+        }         
+
+        .active{     
+            border-bottom: 3px solid $secondary; 
+            color: $primaryText; 
+             
+            .nav-link{
+                color: $primaryText
+            } 
+        }
+
+        .nav-item:hover{
+            color: $primaryText;
+        }
+    }
+}
+
+.header-icon{
+    font-size: 1.8rem;
+    color: $primaryText;
+}
+
+.user-area{
+    @include perfectCenter;
+    width: 15vw;
+    background-color: #eee;
+
+    div{
+        margin-left: 1rem;
+    }
+}
+
+#pt-color{
+    color: #000;
+}
+
+.dropdown-menu{
+    a:focus{
+        background-color: #FFF
+    }
+}
